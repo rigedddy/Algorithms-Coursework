@@ -15,7 +15,20 @@ public class StringAnalytics {
      */
     public String shortestWord(StringList a) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        String shortest = null;
+        int shortestLength = Integer.MAX_VALUE;
+
+        for (int i = 0; i < a.size(); i++){ // loop through the text files
+            String current = a.get(i);
+            if (current.length() < shortestLength){ // check if the current string is less than the largest number
+                shortestLength = current.length(); // replace the shortest length with the current length
+                shortest = current; // the shortest string is now the current
+            }
+        }
+        return shortest;
+
     }
 
 
