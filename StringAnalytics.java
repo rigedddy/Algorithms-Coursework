@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 /**
  * Class of operations on ordered lists of strings.
  * You must not change the signatures of the methods supplied. 
@@ -40,7 +42,18 @@ public class StringAnalytics {
      */
     public int countUnique(StringList a) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        int unique = 0;
+
+        for (int i = 0; i <a.size(); i++){
+            String current = a.get(i);
+            if (current != a.get(i-1) ){
+                unique = unique + 1;
+            }
+        }
+
+        return unique;
     }
 	
 
