@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Objects;
 
 /**
  * Class of operations on ordered lists of strings.
@@ -46,12 +47,13 @@ public class StringAnalytics {
 
         int unique = 0;
 
-        for (int i = 0; i <a.size(); i++){
+        for (int i = 1; i <a.size(); i++){
             String current = a.get(i);
-            if (current != a.get(i-1) ){
-                unique = unique + 1;
+            if (!Objects.equals(current, a.get(i - 1))){
+                unique++;
             }
         }
+
 
         return unique;
     }
