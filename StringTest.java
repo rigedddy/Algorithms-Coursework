@@ -17,13 +17,22 @@ public class StringTest {
     public static void main(String[] args) throws IOException {
         // Don't change this line
         final StringAnalytics sa = new StringAnalytics();
-        final String method = args[0];
+        //final String method = args[0];
         
         for (String file : files) {
             final StringList strings = new StringList("data/" + file);
             System.out.println("Testing on " + file + ":");
 
             // add your tests here
+
+            // shortest word
+            System.out.println("Shortest word: " + sa.shortestWord(strings));
+
+            // unique
+            System.out.println("Unique words: " + sa.countUnique(strings));
+
+            // palindrome
+            System.out.println("Palindrome words: " + sa.countPalindrome(strings));
 
             System.out.println();
         }

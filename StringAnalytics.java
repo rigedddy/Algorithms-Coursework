@@ -47,7 +47,7 @@ public class StringAnalytics {
 
         int unique = 0;
 
-        for (int i = 1; i <a.size(); i++){
+        for (int i = 1; i < a.size(); i++){
             String current = a.get(i);
             if (!Objects.equals(current, a.get(i - 1))){
                 unique++;
@@ -66,7 +66,31 @@ public class StringAnalytics {
      */
     public int countPalindrome(StringList a) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        int palindromeCounter = 0;
+
+
+        for(int i=0; i < a.size(); i++){
+            String current = a.get(i);
+            int first = 0;
+            int last = current.length() - 1;
+            boolean palindrome = true;
+
+            while (first < last) {
+                if (current.charAt(first) != current.charAt(last))
+                    palindrome = false;
+                first++;
+                last--;
+            }
+
+            if (palindrome){
+                palindromeCounter++;
+            }
+
+        }
+
+        return palindromeCounter;
     }
 
     /**
