@@ -57,7 +57,8 @@ public class StringAnalytics {
 
         return unique;
     }
-	
+
+
 
     /**
      * Returns the number of palindrome strings in the list.
@@ -93,6 +94,8 @@ public class StringAnalytics {
         return palindromeCounter;
     }
 
+
+
     /**
      * Search for a string in an ordered collection
      * @param a collection of strings, in ascending order
@@ -100,8 +103,20 @@ public class StringAnalytics {
      */
     public String leastFrequent (StringList a) { 
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        String leastFrequent = null;
+        int max = Integer.MAX_VALUE;
+
+        for (int i = 0; i < a.size(); i++){
+            String current = a.get(i);
+        }
+
+        return leastFrequent;
+
     }
+
+
 
     /**
      * Search for a string in an ordered collection
