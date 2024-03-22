@@ -47,10 +47,14 @@ public class StringAnalytics {
 
         int unique = 0;
 
+        if (a.size() > 0) {
+            unique++; // the first element is always unique
+        }
+
         for (int i = 1; i < a.size(); i++){
             String current = a.get(i);
-            if (!Objects.equals(current, a.get(i - 1))){
-                unique++;
+            if (!Objects.equals(current, a.get(i - 1))){ // if current is not equals to the string before
+                unique++; // add to the unique counter
             }
         }
 
@@ -110,6 +114,20 @@ public class StringAnalytics {
 
         for (int i = 0; i < a.size(); i++){
             String current = a.get(i);
+            int frequent = 1; // set the frequency of the string to 1
+
+            // count how frequent is the current string is
+            while (i < a.size() - 1 && a.get(i).equals(a.get(i+1))){ // check if the current string is equal to the next string
+                frequent++;
+                i++;
+            }
+
+            if (frequent < max){ // check if the frequency of the current is less than frequency stored
+                max = frequent;
+                leastFrequent = current;
+            }
+
+
         }
 
         return leastFrequent;

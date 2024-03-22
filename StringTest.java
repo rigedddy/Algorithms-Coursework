@@ -34,6 +34,9 @@ public class StringTest {
             // palindrome
             System.out.println("Palindrome words: " + sa.countPalindrome(strings));
 
+            // least frequent
+            System.out.println("Least frequent word: " + sa.leastFrequent(strings));
+
             System.out.println();
         }
     }
