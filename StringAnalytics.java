@@ -151,7 +151,7 @@ public class StringAnalytics {
         // binary search
         int low = 0;
         int high = a.size();
-        int index = Integer.MAX_VALUE;
+        int index = 0;
 
         while (low <= high) {
             int mid = low + ((high - low) / 2);
@@ -166,6 +166,8 @@ public class StringAnalytics {
         return index;
     }
 
+
+
     /**
      * Search for a string in an ordered collection
      * @param a collection of strings, in ascending order
@@ -176,7 +178,9 @@ public class StringAnalytics {
         // replace the following line with your implementation
         throw new UnsupportedOperationException("Not implemented yet.");
     }
-	
+
+
+
 
     /**
      * Search for a string in an ordered collection
@@ -186,8 +190,29 @@ public class StringAnalytics {
      */
     public int countGreaterOrEqual(StringList a, String str) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        // binary search
+        int low = 0 ;
+        int high = a.size();
+        int index = 0;
+
+        while ( low <= high ){
+            int mid = low + ((high - low) / 2);
+            if (mid < a.size() && a.get(mid).compareTo(str) >= 0) {
+                high = mid - 1;
+                index = mid;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+
+        return index;
     }
+
+
+
 
     /**
      * Search for a string in an ordered collection

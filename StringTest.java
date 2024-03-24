@@ -38,7 +38,10 @@ public class StringTest {
             System.out.println("Least frequent word: " + sa.leastFrequent(strings));
 
             // count less
-            System.out.println("Count everything less than 'k': " + sa.countLess(strings, "k"));
+            System.out.println("Count everything less than chosen string: " + sa.countLess(strings, "b"));
+
+            // count greater or equal
+            System.out.println("Count everything greater or equal to chosen string: " + sa.countGreaterOrEqual(strings, "z"));
 
             System.out.println();
         }
