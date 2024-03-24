@@ -117,7 +117,9 @@ public class StringAnalytics {
             int frequent = 1; // set the frequency of the string to 1
 
             // count how frequent is the current string is
-            while (i < a.size() - 1 && a.get(i).equals(a.get(i+1))){ // check if the current string is equal to the next string
+            while (i < a.size() - 1 && a.get(i).equals(a.get(i+1))){
+                // check if current is less than the size of the list minus one
+                // and if the current string is equal to the next string
                 frequent++;
                 i++;
             }
@@ -144,7 +146,24 @@ public class StringAnalytics {
      */
     public int countLess(StringList a, String str) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        // binary search
+        int low = 0;
+        int high = a.size();
+        int index = Integer.MAX_VALUE;
+
+        while (low <= high) {
+            int mid = low + ((high - low) / 2);
+            if (mid < a.size() && a.get(mid).compareTo(str) < 0) { // if the middle value is smaller than the size and smaller than 'k'
+                low = mid + 1;
+                index = mid;
+            } else { // anything bigger than 'k'
+                high = mid - 1; // update the new highest string to string before middle
+            }
+        }
+
+        return index;
     }
 
     /**
