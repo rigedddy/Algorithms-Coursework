@@ -43,7 +43,8 @@ public class StringAnalytics {
      */
     public int countUnique(StringList a) {
         // replace the following line with your implementation
-        //throw new UnsupportedOperationException("Not implemented yet.");
+        // throw new UnsupportedOperationException("Not implemented yet.");
+        //
 
         int unique = 0;
 
@@ -155,10 +156,10 @@ public class StringAnalytics {
 
         while (low <= high) {
             int mid = low + ((high - low) / 2);
-            if (mid < a.size() && a.get(mid).compareTo(str) < 0) { // if the middle value is smaller than the size and smaller than 'k'
+            if (mid < a.size() && a.get(mid).compareTo(str) < 0) { // if the middle value is smaller than the size and smaller than str
                 low = mid + 1;
                 index = mid;
-            } else { // anything bigger than 'k'
+            } else { // anything bigger than str
                 high = mid - 1; // update the new highest string to string before middle
             }
         }
@@ -193,24 +194,22 @@ public class StringAnalytics {
         //throw new UnsupportedOperationException("Not implemented yet.");
 
         // binary search
-        int low = 0 ;
-        int high = a.size();
+        int low = 0;
+        int high = a.size() - 1; // Adjust high to the last valid index
         int index = 0;
 
-        while ( low <= high ){
+        while (low <= high) {
             int mid = low + ((high - low) / 2);
-            if (mid < a.size() && a.get(mid).compareTo(str) >= 0) {
+            if (a.get(mid).compareTo(str) >= 0) { // if the middle value is greater or equal to str
                 high = mid - 1;
-                index = mid;
-            }
-            else {
+            } else { // anything smaller than str
                 low = mid + 1;
+                index = mid + 1;
             }
         }
 
         return index;
     }
-
 
 
 
@@ -222,7 +221,25 @@ public class StringAnalytics {
      */
     public int countPrefix(StringList a, String prefix) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        int count = 0;
+
+        for (int i = 0; i < a.size(); i++){
+            String current = a.get(i);
+
+            if (current.startsWith(prefix)){
+                count++;
+            }
+
+            if (current.compareTo(prefix) > 0){
+                break;
+            }
+
+        }
+
+        return count;
+
     }
 
     /**

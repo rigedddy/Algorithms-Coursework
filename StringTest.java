@@ -40,8 +40,17 @@ public class StringTest {
             // count less
             System.out.println("Count everything less than chosen string: " + sa.countLess(strings, "b"));
 
+            // top k
+
+
             // count greater or equal
             System.out.println("Count everything greater or equal to chosen string: " + sa.countGreaterOrEqual(strings, "z"));
+
+            // prefix
+            System.out.println("Count the amount of words with the certain prefix: " + sa.countPrefix(strings, "it"));
+
+            // substring
+
 
             System.out.println();
         }
