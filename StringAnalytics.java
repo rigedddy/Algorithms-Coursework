@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -42,27 +43,27 @@ public class StringAnalytics {
      * @return number of unique elements in the list.
      */
     public int countUnique(StringList a) {
-        // replace the following line with your implementation
-        // throw new UnsupportedOperationException("Not implemented yet.");
-        //
+        // Create a HashMap to store the count of each string
+        HashMap<String, Integer> frequencyMap = new HashMap<>();
 
-        int unique = 0;
+        // Iterate through the list of strings
+        for (int i = 0; i < a.size(); i++) {
+            String current = a.get(i);
 
-        if (a.size() > 0) {
-            unique++; // the first element is always unique
+            // Update the count of the current string in the HashMap
+            frequencyMap.put(current, frequencyMap.getOrDefault(current, 0) + 1);
         }
 
-        for (int i = 1; i < a.size(); i++){
-            String current = a.get(i);
-            if (!Objects.equals(current, a.get(i - 1))){ // if current is not equals to the string before
-                unique++; // add to the unique counter
+        // Count the number of unique elements
+        int uniqueCount = 0;
+        for (int count : frequencyMap.values()) {
+            if (count == 1) { // Unique element has count 1
+                uniqueCount++;
             }
         }
 
-
-        return unique;
+        return uniqueCount;
     }
-
 
 
     /**
