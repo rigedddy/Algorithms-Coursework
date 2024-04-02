@@ -50,6 +50,7 @@ public class StringTest {
             System.out.println("Count the amount of words with the certain prefix: " + sa.countPrefix(strings, "it"));
 
             // substring
+            System.out.println("Count number of elements that neither start with \nthe specified prefix nor contain the given substring: " + sa.countUnMatches(strings, "it", "a"));
 
 
             System.out.println();

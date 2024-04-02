@@ -247,11 +247,27 @@ public class StringAnalytics {
      * @param a collection of strings, in ascending order
      * @param prefix first string to search for
      * @param substring second string to search for
-     * @return number of elements that neither start with the specified prefix nor contain the given substring
+     * @return cou
      */
     public int countUnMatches(StringList a, String prefix, String substring) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        int count = 0;
+
+        for (int i = 0 ; i < a.size(); i++){
+            String current = a.get(i);
+
+            if(!current.startsWith(prefix) && current.indexOf(substring) == -1){
+                count++;
+            }
+
+            if (current.compareTo(prefix) > 0){
+                break;
+            }
+        }
+
+        return count;
     }
 
 }
