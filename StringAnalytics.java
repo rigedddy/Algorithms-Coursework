@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Class of operations on ordered lists of strings.
@@ -8,6 +6,7 @@ import java.util.Objects;
  * You must not change the signatures of the methods supplied. 
  * You must not change the signatures of the methods supplied. 
  */
+
 public class StringAnalytics {
 
     /**
@@ -43,26 +42,24 @@ public class StringAnalytics {
      * @return number of unique elements in the list.
      */
     public int countUnique(StringList a) {
-        // Create a HashMap to store the count of each string
-        HashMap<String, Integer> frequencyMap = new HashMap<>();
+        // replace the following line with your implementation
+        //throw new UnsupportedOperationException("Not implemented yet.");
 
-        // Iterate through the list of strings
-        for (int i = 0; i < a.size(); i++) {
-            String current = a.get(i);
+        int unique = 0;
 
-            // Update the count of the current string in the HashMap
-            frequencyMap.put(current, frequencyMap.getOrDefault(current, 0) + 1);
+        if (a.size() > 0) {
+            unique++; // the first element is always unique
         }
 
-        // Count the number of unique elements
-        int uniqueCount = 0;
-        for (int count : frequencyMap.values()) {
-            if (count == 1) { // Unique element has count 1
-                uniqueCount++;
+        for (int i = 1; i < a.size(); i++){
+            String current = a.get(i);
+            if (!Objects.equals(current, a.get(i - 1))){ // if current is not equals to the string before
+                unique++; // add to the unique counter
             }
         }
 
-        return uniqueCount;
+
+        return unique;
     }
 
 
@@ -85,8 +82,10 @@ public class StringAnalytics {
             boolean palindrome = true;
 
             while (first < last) {
-                if (current.charAt(first) != current.charAt(last))
+                if (current.charAt(first) != current.charAt(last)) {
                     palindrome = false;
+                    break;
+                }
                 first++;
                 last--;
             }
@@ -176,9 +175,35 @@ public class StringAnalytics {
      * @param k integer - top k
      * @return k most frequent elements in the list
      */
-    public String [] topKFrequent (StringList a, int k) {
+    public String[] topKFrequent(StringList a, int k) {
         // replace the following line with your implementation
-        throw new UnsupportedOperationException("Not implemented yet.");
+        //throw new UnsupportedOperationException("Not implemented yet.");
+
+        HashMap<String, Integer> freqMap = new HashMap<>();
+
+        // loop through list and add values to the freq map
+        for (int i = 0; i < a.size(); i++) {
+            String element = a.get(i);
+            freqMap.put(element, freqMap.getOrDefault(element, 0) + 1);
+        }
+
+        // list for sorting values based on their frequency
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(freqMap.entrySet());
+        sortedEntries.sort((entry1, entry2) -> entry2.getValue() - entry1.getValue());
+
+        // array to store top most frequent values
+        String[] topK = new String[k];
+
+        // populating the topk array with the most frequent elements
+        for (int i = 0; i < k; i++) {
+            if (i < sortedEntries.size()) {
+                topK[i] = sortedEntries.get(i).getKey();
+            } else {
+                break; // Break if there are fewer than k elements in the frequency map
+            }
+        }
+
+        return topK;
     }
 
 

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Test program for the Search class.
@@ -38,19 +39,20 @@ public class StringTest {
             System.out.println("Least frequent word: " + sa.leastFrequent(strings));
 
             // count less
-            System.out.println("Count everything less than chosen string: " + sa.countLess(strings, "b"));
+            System.out.println("Count everything less than chosen string: " + sa.countLess(strings, "the"));
 
             // top k
-
+            String[] topKFrequent = sa.topKFrequent(strings,5);
+            System.out.println("Most frequent elements in the list: " + Arrays.toString(topKFrequent));
 
             // count greater or equal
-            System.out.println("Count everything greater or equal to chosen string: " + sa.countGreaterOrEqual(strings, "z"));
+            System.out.println("Count everything greater or equal to chosen string: " + sa.countGreaterOrEqual(strings, "them"));
 
             // prefix
             System.out.println("Count the amount of words with the certain prefix: " + sa.countPrefix(strings, "it"));
 
             // substring
-            System.out.println("Count number of elements that neither start with \nthe specified prefix nor contain the given substring: " + sa.countUnMatches(strings, "it", "a"));
+            System.out.println("Count number of elements that neither start with \nthe specified prefix nor contain the given substring: " + sa.countUnMatches(strings, "it", "cus"));
 
 
             System.out.println();
