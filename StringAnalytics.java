@@ -23,6 +23,7 @@ public class StringAnalytics {
         String shortest = null;
         int shortestLength = Integer.MAX_VALUE;
 
+
         for (int i = 0; i < a.size(); i++){ // loop through the text files
             String current = a.get(i);
             if (current.length() < shortestLength){ // check if the current string is less than the largest number
@@ -45,21 +46,32 @@ public class StringAnalytics {
         // replace the following line with your implementation
         //throw new UnsupportedOperationException("Not implemented yet.");
 
-        int unique = 0;
-
-        if (a.size() > 0) {
-            unique++; // the first element is always unique
+        if (a.size() == 0) {
+            return(0); // check if the file is empty
         }
 
-        for (int i = 1; i < a.size(); i++){
+        // make two array lists to check if the elements are unique
+        ArrayList<String> unique =  new ArrayList<>();
+        ArrayList<String> notUnique = new ArrayList<>();
+
+
+        for (int i = 0; i < a.size() - 1; i++){
             String current = a.get(i);
-            if (!Objects.equals(current, a.get(i - 1))){ // if current is not equals to the string before
-                unique++; // add to the unique counter
+            String next = a.get(i+1);
+            if (!current.equals(next) && !notUnique.contains(current)){ // if current is not equals to the string before
+                unique.add(current); // add to the unique counter
+            }
+            else {
+                notUnique.add(current);
             }
         }
 
+        String last = a.get(a.size() - 1);
+        if (!notUnique.contains(last)){
+            unique.add(last);
+        }
 
-        return unique;
+        return unique.size();
     }
 
 
@@ -151,12 +163,12 @@ public class StringAnalytics {
 
         // binary search
         int low = 0;
-        int high = a.size();
-        int index = 0;
+        int high = a.size() - 1;
+        int index = -1;
 
         while (low <= high) {
             int mid = low + ((high - low) / 2);
-            if (mid < a.size() && a.get(mid).compareTo(str) < 0) { // if the middle value is smaller than the size and smaller than str
+            if (a.get(mid).compareTo(str) < 0) { // if the middle value is smaller than the size and smaller than str
                 low = mid + 1;
                 index = mid;
             } else { // anything bigger than str
@@ -164,7 +176,7 @@ public class StringAnalytics {
             }
         }
 
-        return index;
+        return index + 1; // count the string given as well as the previous ones
     }
 
 
@@ -221,20 +233,20 @@ public class StringAnalytics {
 
         // binary search
         int low = 0;
-        int high = a.size() - 1; // Adjust high to the last valid index
-        int index = 0;
+        int high = a.size() - 1;
+        int index = a.size();
 
         while (low <= high) {
             int mid = low + ((high - low) / 2);
             if (a.get(mid).compareTo(str) >= 0) { // if the middle value is greater or equal to str
+                index = mid;
                 high = mid - 1;
             } else { // anything smaller than str
                 low = mid + 1;
-                index = mid + 1;
             }
         }
 
-        return index;
+        return a.size() - index; // calculate the count of elements greater than or equal to str
     }
 
 
@@ -254,12 +266,8 @@ public class StringAnalytics {
         for (int i = 0; i < a.size(); i++){
             String current = a.get(i);
 
-            if (current.startsWith(prefix)){
+            if (current.startsWith(prefix)){ // if the elements starts with the prefix
                 count++;
-            }
-
-            if (current.compareTo(prefix) > 0){
-                break;
             }
 
         }
@@ -281,15 +289,11 @@ public class StringAnalytics {
 
         int count = 0;
 
-        for (int i = 0 ; i < a.size(); i++){
+        for (int i = 0; i < a.size(); i++) {
             String current = a.get(i);
-
-            if(!current.startsWith(prefix) && current.indexOf(substring) == -1){
+            // if the current element neither starts with the prefix nor contains the substring, doesn't need to be overlap always
+            if (!current.startsWith(prefix) || !current.contains(substring)) {
                 count++;
-            }
-
-            if (current.compareTo(prefix) > 0){
-                break;
             }
         }
 

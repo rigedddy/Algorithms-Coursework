@@ -49,10 +49,10 @@ public class StringTest {
             System.out.println("Count everything greater or equal to chosen string: " + sa.countGreaterOrEqual(strings, "them"));
 
             // prefix
-            System.out.println("Count the amount of words with the certain prefix: " + sa.countPrefix(strings, "it"));
+            System.out.println("Count the amount of words with the certain prefix: " + sa.countPrefix(strings, "pre"));
 
             // substring
-            System.out.println("Count number of elements that neither start with \nthe specified prefix nor contain the given substring: " + sa.countUnMatches(strings, "it", "cus"));
+            System.out.println("Count number of elements that neither start with \nthe specified prefix nor contain the given substring: " + sa.countUnMatches(strings, "an", "want"));
 
 
             System.out.println();
