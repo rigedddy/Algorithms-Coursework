@@ -54,7 +54,7 @@ public class StringAnalytics {
         ArrayList<String> unique =  new ArrayList<>();
         ArrayList<String> notUnique = new ArrayList<>();
 
-
+        // Invariant: 'unique' contains all unique strings encountered so far, and 'notUnique' contains strings seen more than once.
         for (int i = 0; i < a.size() - 1; i++){
             String current = a.get(i);
             String next = a.get(i+1);
@@ -86,13 +86,14 @@ public class StringAnalytics {
 
         int palindromeCounter = 0;
 
-
+        // Invariant: 'palindromeCounter' counts the number of palindromes encountered in the list 'a' up to the current iteration.
         for(int i=0; i < a.size(); i++){
             String current = a.get(i);
             int first = 0;
             int last = current.length() - 1;
             boolean palindrome = true;
 
+            // check if the string is a palindrome by comparing characters from both ends.
             while (first < last) {
                 if (current.charAt(first) != current.charAt(last)) {
                     palindrome = false;
@@ -102,6 +103,7 @@ public class StringAnalytics {
                 last--;
             }
 
+            // move the pointers towards the center of the string.
             if (palindrome){
                 palindromeCounter++;
             }
@@ -125,6 +127,7 @@ public class StringAnalytics {
         String leastFrequent = null;
         int max = Integer.MAX_VALUE;
 
+        // Invariant: 'leastFrequent' stores the least frequent string encountered in 'a' so far, with 'max' representing its frequency.
         for (int i = 0; i < a.size(); i++){
             String current = a.get(i);
             int frequent = 1; // set the frequency of the string to 1
@@ -166,6 +169,7 @@ public class StringAnalytics {
         int high = a.size() - 1;
         int index = -1;
 
+        //Invariant: The index 'index' holds the last position where the element at index 'mid' is less than 'str', within the range of indices from 'low' to 'high', inclusive.
         while (low <= high) {
             int mid = low + ((high - low) / 2);
             if (a.get(mid).compareTo(str) < 0) { // if the middle value is smaller than the size and smaller than str
@@ -206,12 +210,13 @@ public class StringAnalytics {
         // array to store top most frequent values
         String[] topK = new String[k];
 
+        // Invariant: 0 <= i < k, where 'i' represents the index of elements being processed in the 'topK' array.
         // populating the topk array with the most frequent elements
         for (int i = 0; i < k; i++) {
             if (i < sortedEntries.size()) {
                 topK[i] = sortedEntries.get(i).getKey();
             } else {
-                break; // Break if there are fewer than k elements in the frequency map
+                break; // break if there are fewer than k elements in the frequency map
             }
         }
 
@@ -236,6 +241,7 @@ public class StringAnalytics {
         int high = a.size() - 1;
         int index = a.size();
 
+        // Invariant: low <= high, where 'low' represents the lowest index being searched and 'high' represents the highest index being searched.
         while (low <= high) {
             int mid = low + ((high - low) / 2);
             if (a.get(mid).compareTo(str) >= 0) { // if the middle value is greater or equal to str
@@ -263,6 +269,7 @@ public class StringAnalytics {
 
         int count = 0;
 
+        // Invariant: 'i' represents the index being iterated over in the range [0, a.size()), ensuring that all elements are considered.
         for (int i = 0; i < a.size(); i++){
             String current = a.get(i);
 
@@ -289,6 +296,7 @@ public class StringAnalytics {
 
         int count = 0;
 
+        // Invariant: 'i' represents the index being iterated over in the range [0, a.size()), ensuring that all elements are considered.
         for (int i = 0; i < a.size(); i++) {
             String current = a.get(i);
             // if the current element neither starts with the prefix nor contains the substring, doesn't need to be overlap always
